@@ -1,0 +1,8 @@
+[workspace]
+resolver = "3"
+members = [
+    "source-parser",
+]
+
+[workspace.dependencies]
+anyhow = "1.0.98"
