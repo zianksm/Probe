@@ -23,7 +23,7 @@ pub struct SourceItem<S, L, F, J, M> {
     ///  Non-negative integer<br>• Empty (inherits previous)
     pub l: L,
     /// Source file index - which file in a multi-file project (0 for single files)
-   git /// Non-negative integer<br>• Empty (inherits previous)
+    /// Non-negative integer<br>• Empty (inherits previous)
     pub f: F,
     ///Jump type:<br>• "i" = jump into a function<br>• "o" = jump out of a function<br>• "-"/empty = regular execution or inherits previous
     pub j: J,
