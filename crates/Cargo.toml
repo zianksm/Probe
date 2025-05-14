@@ -1,8 +1,7 @@
 [workspace]
 resolver = "3"
-members = [
-    "source-parser",
-]
+members = ["debugger"]
 
 [workspace.dependencies]
 anyhow = "1.0.98"
+foundry-debugger = { git = "https://github.com/foundry-rs/foundry/", tag = "v1.1.0"}
