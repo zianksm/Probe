@@ -6,3 +6,10 @@ edition = "2021"
 [dependencies]
 anyhow = { workspace = true }
 foundry-debugger = { workspace = true }
+foundry-compilers = { workspace = true }
+foundry-common = { workspace = true }
+forge = { workspace = true }
+clap = { workspace = true }
+tokio = { workspace = true }
+foundry-cli = { workspace = true }
+foundry-config = { workspace = true }
