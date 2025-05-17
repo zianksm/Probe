@@ -2153,6 +2153,8 @@ dependencies = [
  "foundry-compilers",
  "foundry-config",
  "foundry-debugger",
+ "foundry-evm-traces",
+ "revm-inspectors",
  "tokio",
 ]
 

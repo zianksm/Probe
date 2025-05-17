@@ -13,7 +13,7 @@ forge = { git = "https://github.com/foundry-rs/foundry/", tag = "v1.1.0", defaul
 foundry-config ={ git = "https://github.com/foundry-rs/foundry/", tag = "v1.1.0", default-features = false } 
 clap  = "4.5.38"
 tokio = "1.45.0"                         # An event-driven, non-blocking I/O platform for writing asynchronous I/O backed applica…
-
+revm-inspectors = "0.16.0"    # Revm inspector implementations
 
 # patch for solar since solar-parse depends on ^0.1.2 but on 0.1.3 they made breaking change bruh
 [patch.crates-io]
