@@ -4,6 +4,14 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+dependencies:
+  '@vscode/debugadapter':
+    specifier: ^1.68.0
+    version: 1.68.0
+  '@vscode/debugprotocol':
+    specifier: ^1.68.0
+    version: 1.68.0
+
 devDependencies:
   '@types/mocha':
     specifier: ^10.0.10
@@ -573,6 +581,17 @@ packages:
       '@typescript-eslint/types': 8.32.1
       eslint-visitor-keys: 4.2.0
     dev: true
+
+  /@vscode/debugadapter@1.68.0:
+    resolution: {integrity: sha512-D6gk5Fw2y4FV8oYmltoXpj+VAZexxJFopN/mcZ6YcgzQE9dgq2L45Aj3GLxScJOD6GeLILcxJIaA8l3v11esGg==}
+    engines: {node: '>=14'}
+    dependencies:
+      '@vscode/debugprotocol': 1.68.0
+    dev: false
+
+  /@vscode/debugprotocol@1.68.0:
+    resolution: {integrity: sha512-2J27dysaXmvnfuhFGhfeuxfHRXunqNPxtBoR3koiTOA9rdxWNDTa1zIFLCFMSHJ9MPTPKFcBeblsyaCJCIlQxg==}
+    dev: false
 
   /@vscode/test-cli@0.0.10:
     resolution: {integrity: sha512-B0mMH4ia+MOOtwNiLi79XhA+MLmUItIC8FckEuKrVAVriIuSWjt7vv4+bF8qVFiNFe4QRfzPaIZk39FZGWEwHA==}

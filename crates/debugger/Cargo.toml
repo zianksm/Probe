@@ -15,3 +15,11 @@ foundry-cli = { workspace = true }
 foundry-config = { workspace = true }
 revm-inspectors = { workspace = true }
 foundry-evm-traces = { workspace = true }
+napi = { workspace = true, features = ["serde_json"] }
+napi-derive = { workspace = true }
+
+[lib]
+crate-type = ["cdylib"]
+
+[build-dependencies]
+napi-build = { workspace = true }

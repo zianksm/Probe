@@ -85,7 +85,7 @@ impl DebuggerBuilder {
         ContractSources::from_project_output(&output, root, Some(&libs)).unwrap()
     }
 
-    pub fn build(test: &str) {
+    pub fn build(test: &str) -> Debugger {
         // Debugger
         let TestResultAndTraces {
             result,
@@ -108,7 +108,7 @@ impl DebuggerBuilder {
 
         let breakpoints = result.breakpoints;
 
-        Debugger::new(debug_arena, identified_contracts, sources, breakpoints);
+        Debugger::new(debug_arena, identified_contracts, sources, breakpoints)
 
         // get library by constructing a temporary test runner and cloning the library
     }
