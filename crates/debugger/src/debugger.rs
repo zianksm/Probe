@@ -164,6 +164,22 @@ impl Debugger {
             }
         }
     }
+    fn generate_opcode_list(&mut self) {
+        for trace_node in &self.ctx.debug_arena {
+            for steps in &trace_node.steps {
+                let opcode = steps.op.to_string();
+                self.ctx.opcode_list.push(opcode);
+            }
+        }
+    }
+
+    pub fn opcode_list(&mut self) -> Vec<String> {
+        if self.ctx.opcode_list.is_empty(){
+            self.generate_opcode_list();
+        }
+
+        self.ctx.opcode_list.to_owned()
+    }
 
     fn total_steps(&self) -> usize {
         self.current_call_ctx().steps.len()

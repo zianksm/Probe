@@ -2,7 +2,7 @@
 use debugger::Debugger;
 use napi::bindgen_prelude::*;
 use napi_derive::napi;
-use std::{cell::RefCell, sync::atomic};
+use std::{any::Any, cell::RefCell, sync::atomic};
 
 pub mod builder;
 pub mod debugger;
@@ -11,16 +11,19 @@ static mut INSTANCE: Option<Debugger> = Option::None;
 
 /// the access is guaranteed to be single threaded since we will package this into a
 /// js addon via napi
-fn with_instance<F>(f: F)
+fn with_instance<F, R>(f: F) -> R
 where
-    F: FnOnce(&mut Debugger),
+    F: FnOnce(&mut Debugger) -> R,
+    R: Any,
 {
     unsafe {
         let mut instance = INSTANCE.take().expect("no debugger instance found");
 
-        f(&mut instance);
+        let r = f(&mut instance);
 
         INSTANCE.replace(instance);
+
+        r
     }
 }
 
@@ -42,4 +45,9 @@ fn step() {
 #[napi]
 fn step_back() {
     with_instance(|d| d.handle_action(debugger::Action::StepBack));
+}
+
+#[napi]
+fn opcode_list() -> Vec<String> {
+    with_instance(|d| d.opcode_list())
 }
