@@ -1,0 +1,37 @@
+
+[package]
+authors = ["zian <lynweklm@gmail.com>"]
+edition = "2021"
+name = "debugger"
+version = "0.1.0"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+napi = "3.0.0"
+napi-derive = "3.0.0"
+anyhow = "1.0.98"
+foundry-debugger = { git = "https://github.com/foundry-rs/foundry/", tag = "v1.3.6", default-features = false }
+foundry-compilers = { version = "0.18.2", default-features = false }
+foundry-common = { git = "https://github.com/foundry-rs/foundry/", tag = "v1.3.6", default-features = false }
+foundry-evm-traces = { git = "https://github.com/foundry-rs/foundry/", tag = "v1.3.6", default-features = false }
+foundry-cli = { git = "https://github.com/foundry-rs/foundry/", tag = "v1.3.6", default-features = false }
+forge = { git = "https://github.com/foundry-rs/foundry/", tag = "v1.3.6", default-features = false }
+foundry-config ={ git = "https://github.com/foundry-rs/foundry/", tag = "v1.3.6", default-features = false } 
+clap  = "4.5.38"
+tokio = "1.45.0"                         # An event-driven, non-blocking I/O platform for writing asynchronous I/O backed applica…
+revm-inspectors = { version = "0.26.5", features = ["serde"] }
+
+[patch.crates-io]
+# solar-interface specify ^0.1.5 but only works on 0.1.5, so pinning this here
+solar-config = {git = "https://github.com/paradigmxyz/solar/", tag = "v0.1.5"}
+alloy-chains = {git = "https://github.com/alloy-rs/chains", tag = "v0.2.6"}
+
+
+[build-dependencies]
+napi-build = "2"
+
+[profile.release]
+lto = true
+strip = "symbols"

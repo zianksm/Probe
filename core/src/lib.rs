@@ -13,41 +13,41 @@ static mut INSTANCE: Option<Debugger> = Option::None;
 /// js addon via napi
 fn with_instance<F, R>(f: F) -> R
 where
-    F: FnOnce(&mut Debugger) -> R,
-    R: Any,
+  F: FnOnce(&mut Debugger) -> R,
+  R: Any,
 {
-    unsafe {
-        let mut instance = INSTANCE.take().expect("no debugger instance found");
+  unsafe {
+    let mut instance = INSTANCE.take().expect("no debugger instance found");
 
-        let r = f(&mut instance);
+    let r = f(&mut instance);
 
-        INSTANCE.replace(instance);
+    INSTANCE.replace(instance);
 
-        r
-    }
+    r
+  }
 }
 
 #[napi]
 fn init(path: String) {
-    let debugger = builder::DebuggerBuilder::build(&path);
+  let debugger = builder::DebuggerBuilder::build(&path);
 
-    unsafe {
-        INSTANCE.replace(debugger);
-    }
+  unsafe {
+    INSTANCE.replace(debugger);
+  }
 }
 
 // debugging core functions
 #[napi]
 fn step() {
-    with_instance(|d| d.handle_action(debugger::Action::Step));
+  with_instance(|d| d.handle_action(debugger::Action::Step));
 }
 
 #[napi]
 fn step_back() {
-    with_instance(|d| d.handle_action(debugger::Action::StepBack));
+  with_instance(|d| d.handle_action(debugger::Action::StepBack));
 }
 
 #[napi]
 fn opcode_list() -> Vec<String> {
-    with_instance(|d| d.opcode_list())
+  with_instance(|d| d.opcode_list())
 }
