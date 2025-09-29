@@ -3,6 +3,7 @@
 import * as vscode from 'vscode';
 import * as Net from 'net';
 import * as lens from "./debugCodeLens";
+import * as core from "debugger";
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -30,7 +31,6 @@ export function activate(context: vscode.ExtensionContext) {
 
 
 	context.subscriptions.concat(disposable)
-
 
 	const codeLensAdapter = new lens.DebugLensAdapter();
 	const codeLensProvider = vscode.languages.registerCodeLensProvider("solidity", codeLensAdapter);

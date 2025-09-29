@@ -5,7 +5,7 @@ use napi_derive::napi;
 use std::{any::Any, cell::RefCell, sync::atomic};
 
 pub mod builder;
-pub mod debugger;
+pub mod core;
 
 static mut INSTANCE: Option<Debugger> = Option::None;
 
