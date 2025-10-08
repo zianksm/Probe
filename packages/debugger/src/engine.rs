@@ -8,7 +8,8 @@ use forge::{
   result::{TestOutcome, TestResult},
   revm::{
     // interpreter::OpCode,
-    bytecode::OpCode, primitives::{map::AddressHashMap, Bytes}
+    bytecode::OpCode,
+    primitives::{map::AddressHashMap, Bytes},
   },
   traces::{debug::ContractSources, CallTraceArena, Traces},
 };
@@ -18,11 +19,13 @@ use foundry_compilers::{artifacts::Libraries, solc::SolcCompiler};
 use foundry_config::Config;
 use foundry_debugger::DebugNode;
 use foundry_evm_traces::CallTraceDecoder;
+use napi::bindgen_prelude::ToNapiValue;
 use revm_inspectors::tracing::types::{CallTraceStep, TraceMemberOrder};
 
 pub struct Debugger {
   ctx: Context,
 }
+
 
 impl Debugger {
   pub fn new(
@@ -41,7 +44,7 @@ impl Debugger {
     }
   }
 
-  fn current_call_ctx(&self) -> &DebugNode {
+  pub fn current_call_ctx(&self) -> &DebugNode {
     &self.ctx.debug_arena[self.ctx.call_index]
   }
 
@@ -52,11 +55,7 @@ impl Debugger {
   fn is_jmp(step: &CallTraceStep, prev: &CallTraceStep) -> bool {
     match matches!(
       prev.op,
-      OpCode::JUMP
-        | OpCode::JUMPI
-        | OpCode::JUMP
-        | OpCode::JUMPI
-        | OpCode::CALL
+      OpCode::JUMP | OpCode::JUMPI | OpCode::JUMP | OpCode::JUMPI | OpCode::CALL
     ) {
       true => true,
       false => {

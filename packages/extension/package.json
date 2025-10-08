@@ -9,7 +9,7 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": ["onStartupFinished"],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
@@ -60,6 +60,6 @@
   "dependencies": {
     "@solidity-parser/parser": "^0.20.1",
     "solc-typed-ast": "^18.2.5",
-    "debugger": "workspace:*"
+    "debugger-core": "workspace:*"
   }
 }

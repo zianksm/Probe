@@ -17,7 +17,7 @@ use foundry_debugger::DebugNode;
 use foundry_evm_traces::CallTraceDecoder;
 use revm_inspectors::tracing::types::TraceMemberOrder;
 
-use crate::debugger::Debugger;
+use crate::engine::Debugger;
 
 pub struct DebuggerBuilder;
 
@@ -108,7 +108,6 @@ impl DebuggerBuilder {
 
     Debugger::new(debug_arena, identified_contracts, sources, breakpoints)
 
-    // get library by constructing a temporary test runner and cloning the library
   }
 
   fn get_identified_contracts_from_decoder(decoder: CallTraceDecoder) -> AddressHashMap<String> {

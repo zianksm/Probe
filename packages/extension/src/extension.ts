@@ -3,7 +3,8 @@
 import * as vscode from 'vscode';
 import * as Net from 'net';
 import * as lens from "./debugCodeLens";
-import * as core from "debugger";
+import * as core from "debugger-core";
+import { FunctionDefinition } from '@solidity-parser/parser/dist/src/ast-types';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -19,13 +20,22 @@ export function activate(context: vscode.ExtensionContext) {
 	[
 
 		vscode.commands.registerCommand('probe.helloWorld', () => {
-			console.log('Congratulations, your extension "probe" is now active2!');
+			console.log('Congratulations, your extension "probe" is now active3!');
 			// The code you place here will be executed every time your command is executed
 			// Display a message box to the user
 			vscode.window.showInformationMessage('Hello World from Probe!222');
 		}),
-		vscode.commands.registerCommand(lens.DebugCommand, () => {
-			vscode.window.showInformationMessage('Debugging....');
+		
+		vscode.commands.registerCommand(lens.DebugCommand, (args: FunctionDefinition) => {
+			//  core.init(args.name!)
+			// throw new Error("atetaer") 
+			const test = core.test()
+
+			//  const opcodes = core.opcodeList()
+
+			//  console.log(opcodes)
+ 
+			vscode.window.showInformationMessage(test);
 		})
 	]
 

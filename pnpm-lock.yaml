@@ -61,7 +61,7 @@ importers:
       '@solidity-parser/parser':
         specifier: ^0.20.1
         version: 0.20.2
-      debugger:
+      debugger-core:
         specifier: workspace:*
         version: link:../debugger
       solc-typed-ast:

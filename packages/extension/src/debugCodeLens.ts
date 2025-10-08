@@ -28,8 +28,6 @@ class DebugLens {
         };
 
         return new vscode.CodeLens(range, cmd);
-
-
     }
 
     private static parseFunctions(source: unknown) {
